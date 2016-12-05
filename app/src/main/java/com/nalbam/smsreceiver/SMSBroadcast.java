@@ -37,20 +37,28 @@ public class SMSBroadcast extends BroadcastReceiver {
             this.abortBroadcast();
 
             Date curDate = new Date(smsMessage[0].getTimestampMillis());
-            SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyy년 MM월 HH시 mm분 ss초 ", Locale.KOREA);
+            SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyy년 MM월 HH시 mm분 ss초", Locale.KOREA);
 
             String originDate = mDateFormat.format(curDate);
-            String origNumber = smsMessage[0].getOriginatingAddress();
-            String Message = smsMessage[0].getMessageBody();
+            String originAddr = smsMessage[0].getOriginatingAddress();
+            String originBody = smsMessage[0].getMessageBody();
 
-            Toast.makeText(mContext, Message, Toast.LENGTH_LONG).show();
+            String message = originDate + "\n" + originAddr + "\n" + originBody;
+
+            Toast.makeText(mContext, message, Toast.LENGTH_LONG).show();
+
+//            Intent showSMSIntent = new Intent(mContext, MainActivity.class);
+//            showSMSIntent.putExtra("originDate", originDate);
+//            showSMSIntent.putExtra("originAddr", originAddr);
+//            showSMSIntent.putExtra("originBody", originBody);
+//            showSMSIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
 //            Intent showSMSIntent = new Intent(mContext, ShowSMSActivity.class);
 //            showSMSIntent.putExtra("originNum", origNumber);
 //            showSMSIntent.putExtra("smsDate", originDate);
 //            showSMSIntent.putExtra("originText", Message);
 //            showSMSIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//
+
 //            mContext.startActivity(showSMSIntent);
         }
     }

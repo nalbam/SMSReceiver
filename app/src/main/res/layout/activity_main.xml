@@ -11,11 +11,10 @@
     tools:context="com.nalbam.smsreceiver.MainActivity">
 
     <Button
-        android:text="퍼미션 테스트"
+        android:text="Permissions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
