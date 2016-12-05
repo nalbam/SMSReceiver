@@ -32,15 +32,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @NeedsPermission(Manifest.permission.RECEIVE_SMS)
-    void needSMS() {
-        Toast.makeText(this, "권환 허용", Toast.LENGTH_SHORT).show();
-    }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         MainActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+    }
+
+    @NeedsPermission(Manifest.permission.RECEIVE_SMS)
+    void needsSMSPermission() {
+        Toast.makeText(this, "SMS 수신 권환 허용", Toast.LENGTH_SHORT).show();
     }
 
     @OnShowRationale(Manifest.permission.RECEIVE_SMS)
@@ -49,24 +49,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnPermissionDenied(Manifest.permission.RECEIVE_SMS)
-    void onSMSDenied() {
-        Toast.makeText(this, "거부", Toast.LENGTH_SHORT).show();
+    void onSMSPermissionDenied() {
+        Toast.makeText(this, "SMS 수신 거부", Toast.LENGTH_SHORT).show();
     }
 
     @OnNeverAskAgain(Manifest.permission.RECEIVE_SMS)
     void onSMSNeverAskAgain() {
-        Toast.makeText(this, "다시 묻지 않음", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "SMS 수신 다시 묻지 않음", Toast.LENGTH_SHORT).show();
     }
 
     private void showRationaleDialog(String message, final PermissionRequest request) {
         new AlertDialog.Builder(this)
-                .setPositiveButton("허용 요청", new DialogInterface.OnClickListener() {
+                .setPositiveButton("SMS 수신 허용 요청", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(@NonNull DialogInterface dialog, int which) {
                         request.proceed();
                     }
                 })
-                .setNegativeButton("거부", new DialogInterface.OnClickListener() {
+                .setNegativeButton("SMS 수신 거부", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(@NonNull DialogInterface dialog, int which) {
                         request.cancel();
