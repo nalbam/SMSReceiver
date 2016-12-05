@@ -37,7 +37,7 @@ public class SMSBroadcast extends BroadcastReceiver {
             this.abortBroadcast();
 
             Date curDate = new Date(smsMessage[0].getTimestampMillis());
-            SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyy년 MM월 HH시 mm분 ss초", Locale.KOREA);
+            SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA);
 
             String originDate = mDateFormat.format(curDate);
             String originAddr = smsMessage[0].getOriginatingAddress();
