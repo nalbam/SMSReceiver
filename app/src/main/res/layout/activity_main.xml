@@ -21,4 +21,13 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="퍼미션 테스트"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btn_sms"
+        android:layout_toLeftOf="@+id/btn_sms"
+        android:layout_toStartOf="@+id/btn_sms"
+        android:id="@+id/button2" />
 </RelativeLayout>
